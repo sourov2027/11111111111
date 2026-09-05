@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্টাইল হাব - প্রিমিয়াম ক্লোদিং শপ</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #e84393;      /* গোলাপি */
+            --primary-dark: #d63384;
+            --secondary: #2d3436;    /* গাঢ় ধূসর */
+            --accent: #6c5ce7;       /* বেগুনি */
+            --light: #f8f9fa;
+            --dark: #1e272e;
+            --white: #ffffff;
+            --gray: #636e72;
+            --shadow: 0 10px 30px rgba(0,0,0,0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--light);
+            color: #2d3436;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+            font-weight: 600;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* ===== Top Bar ===== */
+        .top-bar {
+            background: var(--dark);
+            color: #ccc;
+            font-size: 0.9rem;
+            padding: 8px 0;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .top-bar-left span { margin-right: 20px; }
+        .top-bar i { color: var(--primary); margin-right: 5px; }
+        .top-bar-right a { color: #ccc; margin-left: 15px; transition: var(--transition); }
+        .top-bar-right a:hover { color: var(--primary); }
+
+        /* ===== Header ===== */
+        header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i { color: var(--primary); font-size: 2rem; }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-links li a {
+            color: #333;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        .nav-links li a:hover { color: var(--primary); }
+        .nav-links li a:hover::after,
+        .nav-links li a.active::after { width: 100%; }
+        .nav-links li a.active { color: var(--primary); }
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-left: 15px;
+            transition: var(--transition);
+        }
+        .cart-icon:hover { color: var(--primary); }
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 4px 0;
+            transition: var(--transition);
+        }
+
+        /* ===== Hero Section ===== */
+        .hero {
+            background: linear-gradient(135deg, rgba(232,67,147,0.1), rgba(108,92,231,0.1)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            animation: fadeInUp 1s ease;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #555;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(232,67,147,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Section Titles ===== */
+        .section { padding: 80px 0; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .section-title p { color: var(--gray); max-width: 600px; margin: 0 auto; }
+
+        /* ===== Filter Buttons ===== */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            background: #e9ecef;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 5px 15px rgba(232,67,147,0.3);
+        }
+
+        /* ===== Product Grid ===== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+        .product-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        .product-card:hover .product-image img { transform: scale(1.05); }
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .product-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        .product-rating {
+            color: #ffc107;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .product-price .original {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+        .product-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .product-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+        .btn-add-cart {
+            background: var(--secondary);
+            color: white;
+        }
+        .btn-add-cart:hover { background: #1e272e; }
+        .btn-view {
+            background: #e9ecef;
+            color: #333;
+        }
+        .btn-view:hover { background: #dde2e6; }
+
+        /* ===== Cart Sidebar ===== */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+        .cart-overlay.active { display: block; }
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.active { right: 0; }
+        .cart-header {
+            padding: 20px;
+            background: var(--secondary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h3 { font-size: 1.2rem; }
+        .cart-close { cursor: pointer; font-size: 1.5rem; }
+        .cart-items {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .cart-item-info h4 { font-size: 0.95rem; margin-bottom: 5px; }
+        .cart-item-info p { color: var(--gray); font-size: 0.8rem; }
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .cart-item-quantity button {
+            background: #e9ecef;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .cart-total {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+        .cart-total h4 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .btn-checkout {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .btn-checkout:hover { background: var(--primary-dark); }
+
+        /* ===== Modal ===== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: white;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalIn 0.3s ease;
+        }
+        @keyframes modalIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #333;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+        .modal-close:hover { color: var(--primary); transform: rotate(90deg); }
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+        .modal-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .modal-details h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        .modal-rating { color: #ffc107; margin-bottom: 15px; }
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .modal-description { margin-bottom: 20px; color: #555; }
+        .modal-size, .modal-color {
+            margin-bottom: 15px;
+        }
+        .modal-size label, .modal-color label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .modal-size select {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .color-options {
+            display: flex;
+            gap: 10px;
+        }
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid #ddd;
+        }
+        .color-option.active { border-color: var(--primary); }
+        .btn-add-to-cart-modal {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .btn-add-to-cart-modal:hover { background: var(--primary-dark); }
+
+        /* ===== Features ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .feature-card h3 { color: var(--secondary); margin-bottom: 15px; }
+
+        /* ===== Testimonials ===== */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .testimonial-card .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .testimonial-author { font-weight: 600; color: var(--secondary); }
+        .testimonial-author span {
+            display: block;
+            font-weight: 400;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== Contact ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-info { display: flex; flex-direction: column; gap: 25px; }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            background: rgba(232,67,147,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus { border-color: var(--primary); }
+        .contact-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+        .contact-form button:hover { background: var(--primary-dark); }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--dark);
+            color: #ccc;
+            padding: 50px 0 20px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--primary);
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a {
+            color: #aaa;
+            transition: var(--transition);
+        }
+        .footer-col ul li a:hover { color: var(--primary); padding-left: 5px; }
+        .newsletter-form { display: flex; gap: 10px; margin-top: 15px; }
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #444;
+            background: #111;
+            color: white;
+            border-radius: 5px;
+            outline: none;
+        }
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* ===== Back to Top ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-5px); background: var(--primary-dark); }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 30px;
+                gap: 30px;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+                transition: right 0.3s ease;
+            }
+            .nav-links.active { right: 0; }
+            .hero h1 { font-size: 2.5rem; }
+            .modal-body { grid-template-columns: 1fr; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .cart-sidebar { width: 100%; right: -100%; }
+            .cart-sidebar.active { right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <span><i class="fas fa-phone"></i> +880 1700-000000</span>
+                <span><i class="fas fa-envelope"></i> info@stylehub.com</span>
+            </div>
+            <div class="top-bar-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-tshirt"></i>
+                    <span>স্টাইল<span style="color: var(--primary);">হাব</span></span>
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">হোম</a></li>
+                    <li><a href="#shop">শপ</a></li>
+                    <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                    <li><a href="#testimonials">রিভিউ</a></li>
+                    <li><a href="#contact">যোগাযোগ</a></li>
+                </ul>
+                <div style="display: flex; align-items: center;">
+                    <div class="cart-icon" id="cartIcon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>নতুন <span>ফ্যাশন</span> কালেকশন</h1>
+            <p>সেরা মানের পোশাক, সাশ্রয়ী দামে। আপনার স্টাইলকে আরও আকর্ষণীয় করুন।</p>
+            <div class="hero-buttons">
+                <a href="#shop" class="btn btn-primary">শপ করুন</a>
+                <a href="#contact" class="btn btn-outline">যোগাযোগ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="section" id="shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>আমাদের কালেকশন</h2>
+                <p>ক্যাটাগরি অনুযায়ী পোশাক খুঁজুন</p>
+            </div>
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-category="all">সব</button>
+                <button class="filter-btn" data-category="men">পুরুষ</button>
+                <button class="filter-btn" data-category="women">মহিলা</button>
+                <button class="filter-btn" data-category="kids">শিশু</button>
+                <button class="filter-btn" data-category="accessories">আনুষাঙ্গিক</button>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Features -->
+    <section class="section" id="about" style="background: #f1f3f6;">
+        <div class="container">
+            <div class="section-title">
+                <h2>কেন স্টাইল হাব?</h2>
+                <p>আমাদের বিশেষত্ব</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <h3>প্রিমিয়াম কোয়ালিটি</h3>
+                    <p>১০০% খাঁটি কাপড়, দীর্ঘস্থায়ী রঙ এবং আরামদায়ক ফিট।</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-truck"></i></div>
+                    <h3>দ্রুত ডেলিভারি</h3>
+                    <p>সারাদেশে ২-৩ দিনের মধ্যে ডেলিভারি।</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-undo"></i></div>
+                    <h3>সহজ রিটার্ন</h3>
+                    <p>পছন্দ না হলে ৭ দিনের মধ্যে ফেরত দিন।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>গ্রাহকদের মতামত</h2>
+                <p>আমাদের সন্তুষ্ট গ্রাহকরা</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"অসাধারণ কালেকশন! কাপড়ের মান খুবই ভালো। ডেলিভারিও সময়মতো পেয়েছি।"</p>
+                    <div class="testimonial-author">নুসরাত জাহান <span>ঢাকা</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"দাম একটু বেশি মনে হতে পারে, কিন্তু কোয়ালিটি অসাধারণ। আবার কিনবো।"</p>
+                    <div class="testimonial-author">রাফি আহমেদ <span>চট্টগ্রাম</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"বাচ্চাদের পোশাকের ডিজাইন খুব সুন্দর। মেয়ের খুব পছন্দ হয়েছে।"</p>
+                    <div class="testimonial-author">সাব্বির হোসেন <span>সিলেট</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact" style="background: #f1f3f6;">
+        <div class="container">
+            <div class="section-title">
+                <h2>যোগাযোগ করুন</h2>
+                <p>যেকোনো প্রশ্নে আমাদের সাথে কথা বলুন</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>ঠিকানা</h4>
+                            <p>৪৫, মিরপুর রোড, ঢাকা-১২১৬</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>ফোন</h4>
+                            <p>+880 1700-000000, +880 1800-000000</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>ইমেইল</h4>
+                            <p>info@stylehub.com, support@stylehub.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>খোলা সময়</h4>
+                            <p>শনি - বৃহস্পতি: সকাল ১০টা - রাত ৯টা</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="আপনার নাম" required>
+                    <input type="email" placeholder="ইমেইল" required>
+                    <input type="text" placeholder="ফোন নম্বর">
+                    <textarea rows="5" placeholder="আপনার বার্তা..." required></textarea>
+                    <button type="submit">পাঠান</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>স্টাইল হাব</h4>
+                    <p>ফ্যাশনেবল ও মানসম্মত পোশাক। আপনার স্টাইল, আমাদের অঙ্গীকার।</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="ইমেইল দিন">
+                        <button>সাবস্ক্রাইব</button>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>কুইক লিংক</h4>
+                    <ul>
+                        <li><a href="#home">হোম</a></li>
+                        <li><a href="#shop">শপ</a></li>
+                        <li><a href="#about">আমাদের সম্পর্কে</a></li>
+                        <li><a href="#contact">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>ক্যাটাগরি</h4>
+                    <ul>
+                        <li><a href="#shop">পুরুষ</a></li>
+                        <li><a href="#shop">মহিলা</a></li>
+                        <li><a href="#shop">শিশু</a></li>
+                        <li><a href="#shop">আনুষাঙ্গিক</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>যোগাযোগ</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +880 1700-000000</li>
+                        <li><i class="fas fa-envelope"></i> info@stylehub.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> মিরপুর, ঢাকা</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ২০২৫ স্টাইল হাব। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>আপনার কার্ট</h3>
+            <span class="cart-close" id="cartClose">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be rendered here -->
+        </div>
+        <div class="cart-total">
+            <h4>মোট: <span id="cartTotal">৳ 0</span></h4>
+            <button class="btn-checkout">চেকআউট করুন</button>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Product Image">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modalTitle"></h3>
+                    <div class="modal-rating" id="modalRating"></div>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                    <div class="modal-size">
+                        <label>সাইজ:</label>
+                        <select id="modalSize">
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                            <option>XXL</option>
+                        </select>
+                    </div>
+                    <div class="modal-color">
+                        <label>রঙ:</label>
+                        <div class="color-options" id="colorOptions">
+                            <div class="color-option active" style="background:#333;"></div>
+                            <div class="color-option" style="background:#e84393;"></div>
+                            <div class="color-option" style="background:#00b894;"></div>
+                        </div>
+                    </div>
+                    <button class="btn-add-to-cart-modal" id="modalAddToCart">কার্টে যোগ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== Product Data ====================
+        const products = [
+            { id: 1, name: 'ক্যাজুয়াল শার্ট', category: 'men', price: 1200, oldPrice: 1500, rating: 4.5, description: 'উচ্চ মানের কটন ফ্যাব্রিক, আরামদায়ক এবং টেকসই।', image: 'https://placehold.co/600x400/2d3436/ffffff?text=Men+Shirt' },
+            { id: 2, name: 'জিন্স প্যান্ট', category: 'men', price: 1800, oldPrice: 2200, rating: 4.8, description: 'স্লিম ফিট ডেনিম জিন্স, টেকসই সেলাই।', image: 'https://placehold.co/600x400/1e272e/ffffff?text=Jeans' },
+            { id: 3, name: 'টি-শার্ট', category: 'men', price: 600, oldPrice: 800, rating: 4.2, description: 'সফট কটন টি-শার্ট, গ্রীষ্মের জন্য আদর্শ।', image: 'https://placehold.co/600x400/00b894/ffffff?text=T-Shirt' },
+            { id: 4, name: 'থ্রি-পিস', category: 'women', price: 2500, oldPrice: 3200, rating: 4.9, description: 'ঐতিহ্যবাহী ডিজাইনের থ্রি-পিস, প্রিমিয়াম ফেব্রিক।', image: 'https://placehold.co/600x400/e84393/ffffff?text=Three+Piece' },
+            { id: 5, name: 'কুর্তি', category: 'women', price: 1500, oldPrice: 1900, rating: 4.6, description: 'এমব্রয়ডারি করা কুর্তি, অফিস ও ক্যাজুয়াল উভয়ের জন্য।', image: 'https://placehold.co/600x400/6c5ce7/ffffff?text=Kurti' },
+            { id: 6, name: 'শাড়ি', category: 'women', price: 1800, oldPrice: 2400, rating: 4.7, description: 'ঐতিহ্যবাহী তাঁতের শাড়ি, নরম ও আরামদায়ক।', image: 'https://placehold.co/600x400/ff7675/ffffff?text=Saree' },
+            { id: 7, name: 'বাচ্চাদের টি-শার্ট', category: 'kids', price: 450, oldPrice: 550, rating: 4.4, description: 'নরম সুতি কাপড়, বাচ্চাদের জন্য নিরাপদ।', image: 'https://placehold.co/600x400/fdcb6e/333333?text=Kids+TShirt' },
+            { id: 8, name: 'বাচ্চাদের জিন্স', category: 'kids', price: 900, oldPrice: 1100, rating: 4.5, description: 'টেকসই ডেনিম, সহজে ছিঁড়ে যায় না।', image: 'https://placehold.co/600x400/00cec9/ffffff?text=Kids+Jeans' },
+            { id: 9, name: 'বাচ্চাদের ফ্রক', category: 'kids', price: 750, oldPrice: 950, rating: 4.3, description: 'সুন্দর ডিজাইনের ফ্রক, উৎসবের জন্য পারফেক্ট।', image: 'https://placehold.co/600x400/ff6b6b/ffffff?text=Kids+Frock' },
+            { id: 10, name: 'লেদার বেল্ট', category: 'accessories', price: 500, oldPrice: 650, rating: 4.1, description: 'খাঁটি চামড়ার বেল্ট, দীর্ঘস্থায়ী।', image: 'https://placehold.co/600x400/636e72/ffffff?text=Leather+Belt' },
+            { id: 11, name: 'সানগ্লাস', category: 'accessories', price: 350, oldPrice: 450, rating: 4.0, description: 'UV প্রোটেকশনসহ স্টাইলিশ সানগ্লাস।', image: 'https://placehold.co/600x400/2d3436/ffffff?text=Sunglasses' },
+            { id: 12, name: 'হ্যান্ডব্যাগ', category: 'accessories', price: 1200, oldPrice: 1500, rating: 4.6, description: 'প্রিমিয়াম লেদার হ্যান্ডব্যাগ, পর্যাপ্ত স্পেস।', image: 'https://placehold.co/600x400/e84393/ffffff?text=Handbag' }
+        ];
+
+        let cart = [];
+        let currentCategory = 'all';
+        let currentProductId = null;
+
+        // ==================== DOM Elements ====================
+        const productGrid = document.getElementById('productGrid');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartClose = document.getElementById('cartClose');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.getElementById('cartCount');
+        const productModal = document.getElementById('productModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalAddToCart = document.getElementById('modalAddToCart');
+        const backToTop = document.getElementById('backToTop');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        // ==================== Render Products ====================
+        function renderProducts(filteredProducts) {
+            productGrid.innerHTML = '';
+            if (filteredProducts.length === 0) {
+                productGrid.innerHTML = '<p style="text-align:center; grid-column:1/-1; padding:50px;">কোনো পণ্য পাওয়া যায়নি</p>';
+                return;
+            }
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        <span class="badge">${product.category === 'men' ? 'পুরুষ' : product.category === 'women' ? 'মহিলা' : product.category === 'kids' ? 'শিশু' : 'আনুষাঙ্গিক'}</span>
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-rating">
+                            ${'★'.repeat(Math.floor(product.rating))}${product.rating % 1 >= 0.5 ? '½' : ''}
+                            (${product.rating})
+                        </div>
+                        <div class="product-price">
+                            ৳ ${product.price}
+                            <span class="original">৳ ${product.oldPrice}</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart" onclick="addToCart(${product.id})"><i class="fas fa-shopping-cart"></i> কার্টে</button>
+                            <button class="btn-view" onclick="openProductModal(${product.id})">বিস্তারিত</button>
+                        </div>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // ==================== Filter ====================
+        function applyFilters() {
+            let filtered = products;
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+            renderProducts(filtered);
+        }
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                applyFilters();
+            });
+        });
+
+        // ==================== Cart Functions ====================
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+            // Show cart sidebar briefly
+            openCart();
+            setTimeout(() => {
+                closeCart();
+            }, 1000);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function changeQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        function updateCartUI() {
+            // Update count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            // Render cart items
+            cartItems.innerHTML = '';
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align:center; color:#999;">কার্ট খালি</p>';
+            } else {
+                cart.forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'cart-item';
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>৳ ${item.price} x ${item.quantity}</p>
+                            <div class="cart-item-quantity">
+                                <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                                <span>${item.quantity}</span>
+                                <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                    cartItems.appendChild(div);
+                });
+            }
+
+            // Update total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartTotal.textContent = '৳ ' + total;
+        }
+
+        function openCart() {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        cartIcon.addEventListener('click', openCart);
+        cartClose.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+
+        // ==================== Product Modal ====================
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            currentProductId = productId;
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalRating').innerHTML = '★'.repeat(Math.floor(product.rating)) + (product.rating % 1 >= 0.5 ? '½' : '') + ` (${product.rating})`;
+            document.getElementById('modalPrice').innerHTML = `৳ ${product.price} <span style="text-decoration:line-through;color:#999;font-size:1.2rem;">৳ ${product.oldPrice}</span>`;
+            document.getElementById('modalDescription').textContent = product.description;
+            productModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        modalClose.addEventListener('click', () => {
+            productModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        productModal.addEventListener('click', (e) => {
+            if (e.target === productModal) {
+                productModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        modalAddToCart.addEventListener('click', () => {
+            if (currentProductId) {
+                addToCart(currentProductId);
+                productModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Color option selection
+        document.querySelectorAll('.color-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                document.querySelectorAll('.color-option').forEach(o => o.classList.remove('active'));
+                opt.classList.add('active');
+            });
+        });
+
+        // ==================== Mobile Menu ====================
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // ==================== Back to Top ====================
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ==================== Smooth Scroll ====================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ==================== Contact Form ====================
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('ধন্যবাদ! আপনার বার্তা পাঠানো হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।');
+            this.reset();
+        });
+
+        // ==================== Scroll Animation ====================
+        const revealElements = document.querySelectorAll('.feature-card, .testimonial-card, .product-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        function observeElements() {
+            document.querySelectorAll('.product-card, .feature-card, .testimonial-card').forEach(el => {
+                if (!el.hasAttribute('data-observed')) {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(el);
+                    el.setAttribute('data-observed', 'true');
+                }
+            });
+        }
+
+        observeElements();
+
+        // Re-observe after product filter changes
+        const productGridObserver = new MutationObserver(() => {
+            observeElements();
+            // Trigger animation for new cards
+            setTimeout(() => {
+                document.querySelectorAll('.product-card[data-observed="true"]').forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }, 50);
+        });
+        productGridObserver.observe(productGrid, { childList: true });
+
+        // Initial render
+        applyFilters();
+        updateCartUI();
+    </script>
+</body>
+</html>
